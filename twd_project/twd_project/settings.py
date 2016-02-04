@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_PATH = (os.path.join(BASE_DIR, 'Templates'))
+DATABASE_PATH =  (os.path.join(BASE_DIR, 'db.sqlite3'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,7 +65,7 @@ WSGI_APPLICATION = 'twd_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': DATABASE_PATH,
     }
 }
 
