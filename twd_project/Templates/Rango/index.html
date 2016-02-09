@@ -3,23 +3,33 @@
 <html>
 
 	<head>
-		<title>Rango</title>
+		<title>Rango - Home</title>
 	</head>
 	
 	<body>
 		<h1>Rango says... hello world!</h1>
 		
 		{% if categories %}
+			<h2><strong>All Categories!</strong></h2>
 			<ul>
 				{% for category in categories %}
 				<li><a href="/Rango/category/{{ category.slug }}">{{ category.name }}</a></li>
 				{% endfor %}
 			</ul>
+			<hr><br>
+			
+			<h3><strong>Most popular pages!</strong><h3>
+			<ol>
+				{% for page in pages %}
+				<li><a href={{ page.url }}>{{ page.title }}</a></li>
+				{% endfor %}
+			</ol>
 		{% else %}
 			<strong>There are no categories present.</strong>
 		{% endif %}
 		
-		<a href="/Rango/about/">About</a>
+		<a href="/Rango/about/">About</a><br>
+		<a href="/Rango/add_category/">Add a new category!</a><br>
 	</body>
 	
 </html>

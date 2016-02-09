@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from Rango.models import Category, Page
+from Rango.forms import CategoryForm
 
 def index(request):
 	category_list = Category.objects.order_by('-likes')[:5]
-	context_dict = {'categories': category_list}
+	popular_pages = Page.objects.order_by('-views')[:5]
+	context_dict = {'categories': category_list, 'pages': popular_pages}
 	return render(request, 'Rango/index.html', context_dict)
 	
 def about(request):
@@ -24,3 +26,22 @@ def category(request, category_name_slug):
 		pass
 		
 	return render(request, 'rango/category.html', context_dict)
+	
+def add_category(request):
+	#HTTP Post??
+	if request.method == 'POST':
+		form = CategoryForm(request.POST)
+		
+		#Checking form validity
+		if form.is_valid():
+			#save
+			form.save(commit=True)
+		
+			return index(request)
+		else:
+			print form.errors
+	else:
+		form = CategoryForm()
+	
+	return render(request, 'rango/add_category.html', {'form':form})
+		
