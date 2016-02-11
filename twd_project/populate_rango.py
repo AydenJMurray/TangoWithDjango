@@ -13,7 +13,7 @@ def populate():
     add_page(cat=python_cat,
         title="Official Python Tutorial",
         url="http://docs.python.org/2/tutorial/",
-		views = 381)
+		views = 281)
 
     add_page(cat=python_cat,
         title="How to Think like a Computer Scientist",
