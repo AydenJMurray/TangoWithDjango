@@ -32,6 +32,11 @@ ALLOWED_HOSTS = ["127.0.0.1", "172.30.159.133"]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #Absolute path to the media folder
 
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/Rango/'
+LOGIN_URL = '/accounts/login/'
 
 # Application definition
 
@@ -43,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'Rango',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
