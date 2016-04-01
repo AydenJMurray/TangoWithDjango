@@ -3,6 +3,6 @@ from Rango.models import Category
 
 register = template.Library()
 
-@register.inclustion_tag('Rango/cats.html')
-def get_category_list():
-	return{'cats': Category.objects.all()}
+@register.inclusion_tag('Rango/cats.html')
+def get_category_list(cat=None):
+	return{'cats': Category.objects.all(), 'act_cat':cat}
