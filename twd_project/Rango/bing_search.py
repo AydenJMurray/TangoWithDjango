@@ -1,7 +1,7 @@
 import json
 import urllib, urllib2
+from keys import BING_API_KEY
 
-BING_API_KEY='XlvjvzHdxa+dpjUUFmqB2R4X9MGdbw5TOfl0SVlA0iY'
 
 def run_query(search_terms):
     root_url = 'https://api.datamarket.azure.com/Bing/Search'
@@ -32,7 +32,7 @@ def run_query(search_terms):
         opener = urllib2.build_opener(handler)
         urllib2.install_opener(opener)
 
-        response = urllib2.urlopen(search_url.read())
+        response = urllib2.urlopen(search_url).read()
 
         json_response = json.loads(response)
 
@@ -46,3 +46,10 @@ def run_query(search_terms):
         print "Error when querying the Bing API"
 
     return results
+
+def main():
+    userIn = raw_input("Search for: ")
+    print run_query(userIn)[:10]
+
+if __name__ == '__main__':
+    main()
